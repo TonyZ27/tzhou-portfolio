@@ -91,9 +91,9 @@ export interface HMIDesignSystemData {
 
 export const hmiDesignSystemData: HMIDesignSystemData = {
   hero: {
-    heroImage: '/images/hmi-design-system/hero.png',
+    heroImage: 'images/hmi-design-system/hero.png',
     title: 'Volvo HMI Design System',
-    logoImage: '/images/volvo-logo.png',
+    logoImage: 'images/volvo-logo.png',
     description: `
       <p class="mb-4">I led the consolidation of Volvo's fragmented HMI design systems into a single, scalable foundation that supports all regional platforms. This project went beyond traditional UI design—it was an opportunity to rethink our entire engineering pipeline, invent new component patterns, and invest in early-stage craft.</p>
       <p>Along the way, I vibe-coded multiple Figma plugins to eliminate manual handoffs and streamline team collaboration.</p>
@@ -146,7 +146,7 @@ export const hmiDesignSystemData: HMIDesignSystemData = {
       <p class="mb-4">Product teams exist to ship products, not maintain design systems. When deadlines loom, adopting rigid new components naturally falls to the bottom of the backlog. Because our existing system added friction and forced habit changes, designers took the path of least resistance: detaching and rebuilding from scratch.</p>
       <p><strong>This fragmentation wasn't a lack of discipline. It was a symptom of systemic friction.</strong></p>
     `,
-    media: '/images/hmi-design-system/problem.png',
+    media: 'images/hmi-design-system/problem.png',
     caption: 'The challenges weren\'t immediately obvious on the surface. Separate libraries helped hit immediate deadlines, but created massive technical debt',
   },
   pitch: {
@@ -156,7 +156,7 @@ export const hmiDesignSystemData: HMIDesignSystemData = {
       <p class="mb-4">I built a business case around <strong>aligning incentives</strong>. I promised leadership we would stop forcing teams to adopt arbitrary rules and instead treat them as our primary customers. By automating the boring parts of their workflow, we would make using the design system the fastest way to hit a product deadline.</p>
       <p>Positioning the system as critical infrastructure to accelerate OS development secured the budget and executive mandate.</p>
     `,
-    media: '/images/hmi-design-system/pitch.png',
+    media: 'images/hmi-design-system/pitch.png',
     caption: 'We reinforce stakeholder confidence in the project through thorough PI Planning',
   },
   solution: {
@@ -167,17 +167,17 @@ export const hmiDesignSystemData: HMIDesignSystemData = {
         {
           subtitle: 'Semantic Tokens & Reduction',
           content: 'I created a hierarchical mapping system that reduced token redundancy by <strong>40%</strong>. This approach meant a global color change could propagate automatically through regional implementations. Through systematic reduction, I ruthlessly cut the <strong>200+</strong> variations down to <strong>60</strong> focused core components.',
-          media: '/images/hmi-design-system/design-token.png',
+          media: 'images/hmi-design-system/design-token.png',
         },
         {
           subtitle: '',
           content: 'To ensure cross-project consistency while still allowing local flexibility, I restructured the component library and held bi-weekly reviews to consolidate similar patterns and components across projects.',
-          media: '/images/hmi-design-system/library-structure.png',
+          media: 'images/hmi-design-system/library-structure.png',
         },
         {
           subtitle: 'Slot Component Innovation',
           content: 'To prevent designers from feeling trapped and detaching components again, I introduced "slot components" (inspired by Material Design 3). This modular architecture allowed designers to swap content or sub-components without breaking the primary structure. It reduced their cognitive load, giving them the regional flexibility they needed while maintaining strict global governance in the background.',
-          media: '/images/hmi-design-system/slot-1.png',
+          media: 'images/hmi-design-system/slot-1.png',
           ref: 'slotComponents',
         },
       ],
@@ -187,11 +187,11 @@ export const hmiDesignSystemData: HMIDesignSystemData = {
       content: 'To prevent designers from feeling trapped and detaching components again, I introduced "slot components" (inspired by Material Design 3). This modular architecture allowed designers to swap content or sub-components without breaking the primary structure. It reduced their cognitive load, giving them the regional flexibility they needed while maintaining strict global governance in the background.',
       mediaColumns: [
         {
-          media: '/images/hmi-design-system/slot-1.png',
+          media: 'images/hmi-design-system/slot-1.png',
           caption: 'Slot were integrated into compound elements as a flexible variant, helping teams identify customizable elements while preserving system consistency',
         },
         {
-          media: '/images/hmi-design-system/slot-2.png',
+          media: 'images/hmi-design-system/slot-2.png',
           caption: 'The designers within each product team could then maintain local product-specific components without detaching from the main library',
         },
       ],
@@ -200,11 +200,11 @@ export const hmiDesignSystemData: HMIDesignSystemData = {
       title: 'Automating the Handoff',
       intro1: 'Removing friction meant fixing the most painful part of the job: handoff. Our traditional process required extensive documentation, screenshots, and developers manually re-entering values. It took 2-3 days and caused endless inconsistencies.',
       intro2: 'I collaborated with engineering to build a custom Figma plugin. By integrating OAuth, the plugin connects our design tokens directly to the CI/CD pipeline. When a designer updates a token, it automatically syncs to the codebase.',
-      beforeMedia: '/images/hmi-design-system/workflow-1.png',
-      afterMedia: '/images/hmi-design-system/workflow-2.png',
+      beforeMedia: 'images/hmi-design-system/workflow-1.png',
+      afterMedia: 'images/hmi-design-system/workflow-2.png',
       conclusion: 'This did not just force adoption. It made contribution the path of least resistance. When teams realized they could spend less time on documentation and more time on craft, the culture shifted. The design system was no longer seen as a bottleneck but as a multiplier.',
       fullWidthMedia: {
-        media: '/images/hmi-design-system/pipeline.png',
+        media: 'images/hmi-design-system/pipeline.png',
         caption: 'Design-to-development feedback cycles dropped from 2-3 days to under 30 minutes. This automation enabled unprecedented design-development collaboration, with developers gaining confidence in implementations and designers gaining production visibility.',
       },
     },
@@ -214,7 +214,7 @@ export const hmiDesignSystemData: HMIDesignSystemData = {
     content: `
       <p><strong>Technical excellence alone doesn't guarantee a culture shift.</strong> Instead of throwing a finished system over the wall, I embedded myself in the integration process. I ran bi-weekly review sessions that served a dual purpose: recognizing and celebrating even small component updates from the team, and collecting the harsh feedback I needed to iterate on the system itself.</p>
     `,
-    media: '/images/hmi-design-system/adoption.png',
+    media: 'images/hmi-design-system/adoption.png',
   },
   finalTakeaways: {
     title: 'Final Takeaways',

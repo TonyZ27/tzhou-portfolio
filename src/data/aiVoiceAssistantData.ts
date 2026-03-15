@@ -59,9 +59,9 @@ export interface AIVoiceAssistantData {
 
 export const aiVoiceAssistantData: AIVoiceAssistantData = {
   hero: {
-    heroImage: '/public/images/ai-voice/hero.png',
+    heroImage: 'images/ai-voice/hero.png',
     title: 'AI Voice Assistant',
-    logoImage: '/public/images/volvo-logo.png',
+    logoImage: 'images/volvo-logo.png',
     description:
       "Xiaowo is Volvo's AI-integrated in-vehicle voice assistant. I led the end-to-end UX design, creating an intent-adaptive interaction framework that balances the power of LLMs with strict driving safety standards.",
     annotation:
@@ -107,19 +107,19 @@ export const aiVoiceAssistantData: AIVoiceAssistantData = {
       'The integration of Generative AI created a paradox in the cockpit. Large Language Models (LLMs) are incredibly smart, but they are also inherently verbose and open-ended. In a driving environment, an unconstrained conversation isn\'t a feature—it\'s a safety hazard.',
       'Our core challenge was to reposition the voice assistant, harnessing the power of GenAI without introducing the cognitive load of a chatbot.',
     ],
-    media: '/public/images/ai-voice/problem_requirements.png',
+    media: 'images/ai-voice/problem_requirements.png',
   },
   mentalModel: {
     title: 'Mental Model',
     content:
       "Traditional AI assistants fail in cars because they treat 'chatting' as the ultimate goal. For Volvo, I had to redefine success: intelligence isn't measured by verbosity, but by managing the tension between the driver's needs and the vehicle's data. The mental model I established was built entirely around cognitive alignment. Instead of just giving an answer, the system must first identify the driver's intention, analyze the current vehicle state, and then output a response scaled to the current driving context.",
-    diagram: '/public/images/ai-voice/mental_modal.png',
+    diagram: 'images/ai-voice/mental_modal.png',
   },
   architecture: {
     title: 'Architecture: An Intent Adaptive Framework',
     content:
       'Designing for this complexity meant abandoning the traditional chat window. I built a Dynamic Surface System instead. These flexible UI containers scale based on user engagement—they stay compact to preserve critical driving anchors, but expand to show the AI\'s full reasoning when the driver explicitly asks.',
-    diagram: '/public/images/ai-voice/architecture.png',
+    diagram: 'images/ai-voice/architecture.png',
   },
   solutions: [
     {
@@ -127,32 +127,32 @@ export const aiVoiceAssistantData: AIVoiceAssistantData = {
       subtitle: 'e.g. "Open the window"',
       description:
         "The user gives a direct command and expects immediate action. The system executes with zero visual distraction. The driver's eyes stay on the road.",
-      media: '/public/images/ai-voice/solution_reflexive_flow.mp4',
+      media: 'images/ai-voice/solution_reflexive_flow.mp4',
     },
     {
       title: 'Tactical Intervention',
       subtitle: 'e.g. "Open the trunk"',
       description:
         'When the VA initiates a safety change or the user requests a vehicle adjustment, they need tactile affordance. The interaction is urgent and requires focused confirmation beyond voice alone.',
-      media: '/public/images/ai-voice/solution_tactical_intervention.mp4',
+      media: 'images/ai-voice/solution_tactical_intervention.mp4',
     },
     {
       title: 'Selective Engagement',
       subtitle: 'e.g. "What is Labubu?"',
       description:
         'The value is in the content, but the driver\'s attention is scarce. I created a way to "bookmark" intelligence. The system shows a lightweight teaser capsule.',
-      media: '/public/images/ai-voice/solution_selective_engagement_1.mp4',
+      media: 'images/ai-voice/solution_selective_engagement_1.mp4',
       isMultiPart: true,
       additionalContent:
         'Once the vehicle reaches a safe state (e.g., parked or at a red light), the user\'s cognitive budget increases, and they can expand the capsule to shift from "skimming" to "consuming."',
-      additionalMedia: '/public/images/ai-voice/solution_selective_engagement_2.png',
+      additionalMedia: 'images/ai-voice/solution_selective_engagement_2.png',
     },
     {
       title: 'High-Assurance Verification',
       subtitle: 'e.g. "Why is dim light on?"',
       description:
         "Here, the user isn't chatting; they are looking for the truth about a situation or complex vehicle status. I designed an anchored space for the agent's full reasoning. This allows for dense diagnostics without obstructing the primary driving instruments.",
-      media: '/public/images/ai-voice/solution_high_assurance.png',
+      media: 'images/ai-voice/solution_high_assurance.png',
     },
   ],
   takeaways: {

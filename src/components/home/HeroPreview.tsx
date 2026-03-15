@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Project } from '../../types/project';
 import { Tag } from '../ui/Tag';
+import { getAssetUrl } from '../../lib/assetUrl';
 
 interface HeroPreviewProps {
   project: Project | null;
@@ -15,7 +16,7 @@ export function HeroPreview({ project, tags }: HeroPreviewProps) {
     if (project && !loadedImages.has(project.coverImage)) {
       // Preload image
       const img = new Image();
-      img.src = project.coverImage;
+      img.src = getAssetUrl(project.coverImage);
       img.onload = () => {
         setLoadedImages((prev) => new Set([...prev, project.coverImage]));
       };
@@ -47,7 +48,7 @@ export function HeroPreview({ project, tags }: HeroPreviewProps) {
           <>
             {/* Cover Image - z-0 */}
             <img
-              src={displayProject.coverImage}
+              src={getAssetUrl(displayProject.coverImage)}
               alt={displayProject.title}
               className="absolute inset-0 w-full h-full object-cover z-0"
             />

@@ -1,4 +1,5 @@
 import { cn } from '../../lib/utils';
+import { getAssetUrl } from '../../lib/assetUrl';
 import type { Project } from '../../types/project';
 
 interface WorksPreviewProps {
@@ -21,7 +22,7 @@ export function WorksPreview({ project, parallax, isVisible, verticalOffset = 0 
     >
       {/* Project Cover Image with Parallax - Aligned to hovered item */}
       <img
-        src={project?.coverImage || BLACK_PLACEHOLDER}
+        src={project?.coverImage ? getAssetUrl(project.coverImage) : BLACK_PLACEHOLDER}
         alt={project?.title || 'Project preview'}
         className="w-[80%] max-w-[320px] object-contain shadow-2xl"
         style={{

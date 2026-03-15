@@ -8,7 +8,7 @@ import { HMIDesignSystemPage } from './pages/HMIDesignSystem';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/tzhou-portfolio">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/works" element={<WorksPage />} />

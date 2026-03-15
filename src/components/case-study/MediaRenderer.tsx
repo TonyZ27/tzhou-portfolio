@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef } from 'react';
+import { getAssetUrl } from '../../lib/assetUrl';
 
 interface MediaRendererProps {
   src: string;
@@ -19,6 +20,9 @@ export function MediaRenderer({
   const [naturalSize, setNaturalSize] = useState<{ width: number; height: number } | null>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Apply base URL to the source path
+  const resolvedSrc = useMemo(() => getAssetUrl(src), [src]);
 
   // Detect if the source is a video based on file extension or URL pattern
   const isVideo = useMemo(() => {
@@ -75,7 +79,7 @@ export function MediaRenderer({
       >
         <video
           ref={videoRef}
-          src={src}
+          src={resolvedSrc}
           className={`w-full h-full ${objectFitClass} bg-black`}
           autoPlay
           loop
@@ -97,7 +101,7 @@ export function MediaRenderer({
     >
       <img
         ref={imgRef}
-        src={src}
+        src={resolvedSrc}
         alt={alt}
         className={`w-full h-full ${objectFitClass}`}
         onLoad={handleImageLoad}

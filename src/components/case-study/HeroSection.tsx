@@ -1,5 +1,6 @@
 import { Tag } from '../ui/Tag';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../../lib/assetUrl';
 
 interface MetadataItem {
   label: string;
@@ -41,7 +42,7 @@ export function HeroSection({
       {/* Hero Image */}
       <div className="w-full aspect-video bg-muted rounded-lg overflow-hidden">
         <img
-          src={heroImage}
+          src={getAssetUrl(heroImage)}
           alt={title}
           className="w-full h-full object-cover"
         />
@@ -66,7 +67,7 @@ export function HeroSection({
           {logoImage && (
             <div className="w-12 h-12">
               <img
-                src={logoImage}
+                src={getAssetUrl(logoImage)}
                 alt="Company Logo"
                 className="w-full h-full object-contain"
               />
@@ -125,7 +126,7 @@ export function HeroSection({
               <div className="w-16 h-16 bg-[#d9d9d9] rounded-lg shrink-0 overflow-hidden">
                 {project.iconUrl && (
                   <img
-                    src={project.iconUrl}
+                    src={getAssetUrl(project.iconUrl)}
                     alt={project.name}
                     className="w-full h-full object-cover"
                   />
