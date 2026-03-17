@@ -80,10 +80,10 @@ export function HeroSection({
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
         {/* Left Column: Metadata */}
         {metadata && metadata.length > 0 && (
-          <div className="flex flex-col gap-2 lg:w-[337px] shrink-0">
+          <div className="flex flex-col gap-4 min-w-80 shrink-0">
             {metadata.map((item, index) => (
               <div key={index} className="flex gap-2 items-center">
-                <span className="text-xs uppercase text-muted-foreground w-[40px] shrink-0">
+                <span className="text-xs uppercase text-muted-foreground w-12 shrink-0">
                   {item.label}
                 </span>
                 <span className="text-base text-foreground">

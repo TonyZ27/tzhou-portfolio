@@ -6,10 +6,24 @@ import { ProjectList } from '../components/home/ProjectList';
 import { HeroPreview } from '../components/home/HeroPreview';
 import { PageHeader } from '../components/layout/PageHeader';
 import { projects } from '../data/projects';
+import { useLanguage } from '../contexts/LanguageContext';
 import type { Project } from '../types/project';
+
+const translations = {
+  en: {
+    selectedProjects: 'SELECTED PROJECTS',
+    productDesigner: 'Product Designer @2026',
+  },
+  zh: {
+    selectedProjects: '精选项目',
+    productDesigner: '产品设计师 @2026',
+  },
+};
 
 export function HomePage() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
 
   // Filter to show only featured projects on the home page
   const selectedProjects = projects.filter((project) => project.featured);
@@ -43,7 +57,7 @@ export function HomePage() {
 
         {/* Mobile Project Cards */}
         <main className="flex-1 px-4 flex flex-col pb-24">
-          <PageHeader title="SELECTED PROJECTS" />
+          <PageHeader title={t.selectedProjects} />
 
           <div className="flex flex-col mt-4 flex-1">
             {selectedProjects.map((project) => (
@@ -53,13 +67,13 @@ export function HomePage() {
                 className="group flex flex-col gap-2 py-4 border-b border-bg-border last:border-0"
               >
                 <span className="font-sans text-xl font-medium text-foreground">
-                  {project.title}
+                  {project.title[currentLanguage]}
                 </span>
                 <span className="font-mono text-number-sm text-muted-foreground">
                   {project.year}
                 </span>
                 <p className="font-sans text-base text-muted-foreground">
-                  {project.description}
+                  {project.description[currentLanguage]}
                 </p>
               </a>
             ))}
@@ -72,7 +86,7 @@ export function HomePage() {
                 <span className="text-accent-foreground text-xs font-mono">TZ</span>
               </div>
               <span className="font-mono text-xs text-muted-foreground tracking-wider uppercase">
-                Product Designer @2026
+                {t.productDesigner}
               </span>
             </div>
           </footer>

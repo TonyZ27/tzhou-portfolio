@@ -1,10 +1,26 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { projects } from '../data/projects';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const translations = {
+  en: {
+    projectNotFound: 'Project not found',
+    goBackHome: 'Go back home',
+    back: 'Back',
+  },
+  zh: {
+    projectNotFound: '项目未找到',
+    goBackHome: '返回首页',
+    back: '返回',
+  },
+};
 
 export function WorkPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
   const project = projects.find((p) => p.id === id);
 
   if (!project) {
@@ -12,13 +28,13 @@ export function WorkPage() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-sans text-xl font-medium text-foreground mb-4">
-            Project not found
+            {t.projectNotFound}
           </h1>
           <button
             onClick={() => navigate('/')}
             className="text-primary hover:underline"
           >
-            Go back home
+            {t.goBackHome}
           </button>
         </div>
       </div>
@@ -35,7 +51,7 @@ export function WorkPage() {
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span className="font-sans text-base">Back</span>
+            <span className="font-sans text-base">{t.back}</span>
           </button>
         </div>
       </header>
@@ -47,7 +63,7 @@ export function WorkPage() {
             {project.index}
           </span>
           <h1 className="font-sans text-3xl font-medium text-foreground mt-2">
-            {project.title}
+            {project.title[currentLanguage]}
           </h1>
           <p className="font-mono text-number-sm text-muted-foreground mt-1">
             {project.year}
@@ -60,16 +76,16 @@ export function WorkPage() {
         </div>
 
         <p className="font-sans text-lg text-foreground leading-relaxed mb-6">
-          {project.description}
+          {project.description[currentLanguage]}
         </p>
 
         <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
+          {project.tags.map((tag, index) => (
             <span
-              key={tag}
+              key={index}
               className="inline-flex items-center bg-muted text-foreground text-text-sm rounded-full px-3 py-1 font-sans"
             >
-              {tag}
+              {tag[currentLanguage]}
             </span>
           ))}
         </div>

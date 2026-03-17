@@ -1,6 +1,7 @@
 import { cn } from '../../lib/utils';
 import { getAssetUrl } from '../../lib/assetUrl';
 import type { Project } from '../../types/project';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface WorksPreviewProps {
   project: Project | null;
@@ -13,6 +14,8 @@ interface WorksPreviewProps {
 const BLACK_PLACEHOLDER = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23000000"/%3E%3C/svg%3E';
 
 export function WorksPreview({ project, parallax, isVisible, verticalOffset = 0 }: WorksPreviewProps) {
+  const { currentLanguage } = useLanguage();
+
   return (
     <div
       className={cn(
@@ -23,7 +26,7 @@ export function WorksPreview({ project, parallax, isVisible, verticalOffset = 0 
       {/* Project Cover Image with Parallax - Aligned to hovered item */}
       <img
         src={project?.coverImage ? getAssetUrl(project.coverImage) : BLACK_PLACEHOLDER}
-        alt={project?.title || 'Project preview'}
+        alt={project?.title ? project.title[currentLanguage] : 'Project preview'}
         className="w-[80%] max-w-[320px] object-contain shadow-2xl"
         style={{
           transform: `translate(${parallax.x}px, ${parallax.y + verticalOffset}px)`,

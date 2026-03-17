@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import type { Project } from '../../types/project';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface ProjectItemProps {
   project: Project;
@@ -21,6 +22,8 @@ export function ProjectItem({
   onMouseLeaveItem,
   onClick,
 }: ProjectItemProps) {
+  const { currentLanguage } = useLanguage();
+
   return (
     <div
       className={cn(
@@ -74,7 +77,7 @@ export function ProjectItem({
                 : 'text-foreground font-medium'
             )}
           >
-            {project.title}
+            {project.title[currentLanguage]}
           </span>
 
           {/* Stroke/Divider */}
@@ -109,7 +112,7 @@ export function ProjectItem({
               : 'text-muted-foreground'
           )}
         >
-          {project.description}
+          {project.description[currentLanguage]}
         </p>
       </div>
     </div>

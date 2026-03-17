@@ -1,22 +1,40 @@
-import { Home, Briefcase, CircleUser, Bot, Languages} from 'lucide-react';
+import { Home, Briefcase, CircleUser } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../../lib/utils';
+import { useLanguage } from '../../contexts/LanguageContext';
+import { LanguageSwitch } from './LanguageSwitch';
 
 interface VerticalNavProps {
   activeTab?: 'home' | 'works' | 'about';
 }
 
+const translations = {
+  en: {
+    home: 'Home',
+    works: 'Works',
+    about: 'About',
+  },
+  zh: {
+    home: '首页',
+    works: '作品',
+    about: '关于',
+  },
+};
+
 export function VerticalNav({ activeTab = 'home' }: VerticalNavProps) {
   const navigate = useNavigate();
+  const { currentLanguage } = useLanguage();
+
+  const t = translations[currentLanguage];
 
   const navItems = [
-    { id: 'home', icon: Home, label: 'Home', path: '/' },
-    { id: 'works', icon: Briefcase, label: 'Works', path: '/works' },
-    { id: 'about', icon: CircleUser, label: 'About', path: '/about' },
+    { id: 'home', icon: Home, label: t.home, path: '/' },
+    { id: 'works', icon: Briefcase, label: t.works, path: '/works' },
+    { id: 'about', icon: CircleUser, label: t.about, path: '/about' },
   ] as const;
 
   return (
-    <nav className="hidden lg:flex bg-background border-r border-border flex-col gap-6 h-full items-center py-6 w-16 shrink-0">
+    <nav className="hidden lg:flex bg-background border-r border-border flex-col gap-6 h-screen items-center py-6 w-16 shrink-0 sticky top-0">
       {/* Logo */}
       <div className="flex h-[70px] items-center justify-center relative w-[17px]">
         <div className="flex-none rotate-90">
@@ -53,20 +71,9 @@ export function VerticalNav({ activeTab = 'home' }: VerticalNavProps) {
         })}
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex flex-col gap-2 items-start">
-        <button
-          className="flex items-center justify-center w-10 h-10 rounded-md text-muted-foreground hover:text-foreground transition-colors duration-200"
-          aria-label="AI Assistant"
-        >
-          <Bot className="w-5 h-5" />
-        </button>
-        <button
-          className="flex items-center justify-center w-10 h-10 rounded-md text-muted-foreground hover:text-foreground transition-colors duration-200"
-          aria-label="Translate"
-        >
-          <Languages className="w-5 h-5" />
-        </button>
+      {/* Language Switch */}
+      <div className="flex flex-col items-center">
+        <LanguageSwitch orientation="vertical" />
       </div>
     </nav>
   );

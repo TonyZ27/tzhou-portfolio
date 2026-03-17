@@ -1,13 +1,20 @@
+export interface LocalizedText {
+  en: string;
+  zh: string;
+}
+
 export interface Project {
   id: string;
   index: string;
-  title: string;
+  title: LocalizedText;
   year: string;
-  description: string;
+  description: LocalizedText;
   coverImage: string;
-  tags: string[];
-  company: string;
-  type: string;
-  category: string[];
+  tags: LocalizedText[];
+  company: LocalizedText;
+  type: LocalizedText;
+  category: LocalizedText[];
   featured?: boolean;
+  externalLink?: string;
+  inactive?: boolean;
 }

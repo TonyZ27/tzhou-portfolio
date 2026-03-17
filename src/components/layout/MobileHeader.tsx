@@ -1,4 +1,4 @@
-import { Bot, Languages } from 'lucide-react';
+import { LanguageSwitch } from './LanguageSwitch';
 
 export function MobileHeader() {
   return (
@@ -7,21 +7,8 @@ export function MobileHeader() {
         {/* Logo */}
         <span className="font-sans font-semibold text-base">T.ZHOU</span>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-2">
-          <button
-            className="flex items-center justify-center w-10 h-10 rounded-md text-muted-foreground hover:text-foreground transition-colors duration-200"
-            aria-label="AI Assistant"
-          >
-            <Bot className="w-5 h-5" />
-          </button>
-          <button
-            className="flex items-center justify-center w-10 h-10 rounded-md text-muted-foreground hover:text-foreground transition-colors duration-200"
-            aria-label="Translate"
-          >
-            <Languages className="w-5 h-5" />
-          </button>
-        </div>
+        {/* Language Switch */}
+        <LanguageSwitch orientation="horizontal" />
       </div>
     </header>
   );

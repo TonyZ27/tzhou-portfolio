@@ -2,15 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import type { Project } from '../../types/project';
 import { Tag } from '../ui/Tag';
 import { getAssetUrl } from '../../lib/assetUrl';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface HeroPreviewProps {
   project: Project | null;
-  tags: string[];
+  tags: { en: string; zh: string }[];
 }
 
 export function HeroPreview({ project, tags }: HeroPreviewProps) {
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const prevProjectRef = useRef<Project | null>(null);
+  const { currentLanguage } = useLanguage();
 
   useEffect(() => {
     if (project && !loadedImages.has(project.coverImage)) {
@@ -49,7 +51,7 @@ export function HeroPreview({ project, tags }: HeroPreviewProps) {
             {/* Cover Image - z-0 */}
             <img
               src={getAssetUrl(displayProject.coverImage)}
-              alt={displayProject.title}
+              alt={displayProject.title[currentLanguage]}
               className="absolute inset-0 w-full h-full object-cover z-0"
             />
 
@@ -60,8 +62,8 @@ export function HeroPreview({ project, tags }: HeroPreviewProps) {
             <div className="absolute inset-x-0 bottom-0 z-20 p-12">
               {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-3">
-                {tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
+                {tags.map((tag, index) => (
+                  <Tag key={index}>{tag[currentLanguage]}</Tag>
                 ))}
               </div>
             </div>

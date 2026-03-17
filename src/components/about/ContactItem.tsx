@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { FileText, Mail, Github, Linkedin, Copy, Check, Download, ArrowRight } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
+import type { LocalizedText } from '../../types/project';
 
 export type ContactType = 'copy' | 'download' | 'link';
 
 interface ContactItemProps {
-  label: string;
+  label: LocalizedText;
   handle: string;
   type: ContactType;
   target?: string;
@@ -18,9 +20,20 @@ const iconMap = {
   linkedin: Linkedin,
 };
 
+const translations = {
+  en: {
+    copied: 'Copied!',
+  },
+  zh: {
+    copied: '已复制！',
+  },
+};
+
 export function ContactItem({ label, handle, type, target, icon }: ContactItemProps) {
   const [copied, setCopied] = useState(false);
+  const { currentLanguage } = useLanguage();
   const Icon = iconMap[icon];
+  const t = translations[currentLanguage];
 
   const handleClick = async () => {
     if (type === 'copy' && target) {
@@ -56,7 +69,7 @@ export function ContactItem({ label, handle, type, target, icon }: ContactItemPr
       <div className="flex flex-col gap-1 items-start min-w-0 flex-1">
         <div className="flex flex-col justify-center w-full">
           <p className="font-sans font-normal text-[15px] text-foreground leading-none">
-            {label}
+            {label[currentLanguage]}
           </p>
         </div>
         <div className="flex flex-col justify-center w-full">
@@ -69,7 +82,7 @@ export function ContactItem({ label, handle, type, target, icon }: ContactItemPr
         <ActionIcon />
         {copied && (
           <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-foreground text-background text-xs rounded whitespace-nowrap">
-            Copied!
+            {t.copied}
           </span>
         )}
       </div>

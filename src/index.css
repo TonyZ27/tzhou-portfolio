@@ -64,4 +64,9 @@
   strong {
     @apply font-semibold text-foreground;
   }
+
+  /* 连续段落之间添加 4px 间距 */
+  p + p {
+    @apply -mt-2;
+  }
 }

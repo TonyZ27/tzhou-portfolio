@@ -1,30 +1,49 @@
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 export interface TocItem {
   id: string;
-  label: string;
+  label: LocalizedText;
 }
+
+import type { LocalizedText } from '../../types/project';
 
 interface CaseStudySidebarProps {
   className?: string;
   tocItems?: TocItem[];
 }
 
+const translations = {
+  en: {
+    back: 'Back',
+    goBack: 'Go back',
+  },
+  zh: {
+    back: '返回',
+    goBack: '返回',
+  },
+};
+
 // Default TOC items for AI Voice Assistant page (backward compatible)
-const defaultTocItems: TocItem[] = [
-  { id: 'overview', label: '1-Minute Overview' },
-  { id: 'problem', label: 'Problem' },
-  { id: 'mental-model', label: 'Mental Model' },
-  { id: 'architecture', label: 'Architecture' },
-  { id: 'solution', label: 'Solution' },
-  { id: 'takeaways', label: 'Takeaways' },
+const defaultTocItems = (lang: 'en' | 'zh'): TocItem[] => [
+  { id: 'overview', label: { en: '1-Minute Overview', zh: '一分钟速览' } },
+  { id: 'problem', label: { en: 'Problem', zh: 'Problem' } },
+  { id: 'mental-model', label: { en: 'Mental Model', zh: 'Mental Model' } },
+  { id: 'architecture', label: { en: 'Architecture', zh: 'Architecture' } },
+  { id: 'solution', label: { en: 'Solution', zh: 'Solution' } },
+  { id: 'takeaways', label: { en: 'Takeaways', zh: 'Takeaways' } },
 ];
 
-export function CaseStudySidebar({ className, tocItems = defaultTocItems }: CaseStudySidebarProps) {
+export function CaseStudySidebar({ className, tocItems }: CaseStudySidebarProps) {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState<string>('');
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
+
+  // Use provided tocItems or fall back to default
+  const items = tocItems || defaultTocItems(currentLanguage);
 
   useEffect(() => {
     // Set up IntersectionObserver to track active section
@@ -43,7 +62,7 @@ export function CaseStudySidebar({ className, tocItems = defaultTocItems }: Case
     );
 
     // Observe all sections
-    tocItems.forEach((item) => {
+    items.forEach((item) => {
       const element = document.getElementById(item.id);
       if (element) {
         observer.observe(element);
@@ -51,7 +70,7 @@ export function CaseStudySidebar({ className, tocItems = defaultTocItems }: Case
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [items]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -71,15 +90,15 @@ export function CaseStudySidebar({ className, tocItems = defaultTocItems }: Case
         <button
           onClick={() => navigate(-1)}
           className="flex items-center gap-1 text-foreground hover:text-muted-foreground transition-colors duration-200"
-          aria-label="Go back"
+          aria-label={t.goBack}
         >
           <ArrowLeft className="w-5 h-5" />
-          <span className="font-sans text-base">Back</span>
+          <span className="font-sans text-base">{t.back}</span>
         </button>
 
         {/* Table of Contents */}
         <nav className="flex flex-col gap-4">
-          {tocItems.map((item) => (
+          {items.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -90,7 +109,7 @@ export function CaseStudySidebar({ className, tocItems = defaultTocItems }: Case
                   : 'text-muted-foreground hover:text-foreground'
               }`}
             >
-              {item.label}
+              {item.label[currentLanguage]}
             </a>
           ))}
         </nav>
@@ -101,10 +120,10 @@ export function CaseStudySidebar({ className, tocItems = defaultTocItems }: Case
         <button
           onClick={() => navigate(-1)}
           className="flex items-center gap-1 text-foreground hover:text-muted-foreground transition-colors duration-200"
-          aria-label="Go back"
+          aria-label={t.goBack}
         >
           <ArrowLeft className="w-5 h-5" />
-          <span className="font-sans text-base">Back</span>
+          <span className="font-sans text-base">{t.back}</span>
         </button>
       </div>
     </>

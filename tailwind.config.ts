@@ -53,8 +53,8 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        // All text uses Geist from Figma Local Variables
-        sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+        // All text uses Geist from Figma Local Variables, with Chinese system fonts as fallback
+        sans: ['Geist', '"PingFang SC"', '"Hiragino Sans GB"', '"Microsoft YaHei"', 'Inter', 'system-ui', 'sans-serif'],
         // Monospace for numbers from Figma: Menlo
         mono: ['Menlo', 'Monaco', 'Consolas', 'monospace'],
         // Handwriting font for "Tony" in About page

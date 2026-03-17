@@ -3,9 +3,25 @@ import { MobileHeader } from '../components/layout/MobileHeader';
 import { MobileBottomNav } from '../components/layout/MobileBottomNav';
 import { GridSectionHeader, SkillItem, TimelineItem, ContactItem } from '../components/about';
 import { aboutData } from '../data/aboutData';
+import { useLanguage } from '../contexts/LanguageContext';
+
+const translations = {
+  en: {
+    whatImGoodAt: "What I'm good at",
+    timeline: 'Timeline',
+    findMe: 'Find me',
+  },
+  zh: {
+    whatImGoodAt: '我的专长',
+    timeline: '经历',
+    findMe: '联系我',
+  },
+};
 
 export function About() {
   const { hero, skills, timeline, contacts } = aboutData;
+  const { currentLanguage } = useLanguage();
+  const t = translations[currentLanguage];
 
   return (
     <div className="min-h-screen bg-background">
@@ -25,7 +41,7 @@ export function About() {
                   <div className="flex flex-col">
                     <div className="flex flex-col justify-center">
                       <p className="font-sans font-medium text-4xl text-foreground whitespace-nowrap leading-none">
-                        {hero.greeting}
+                        {hero.greeting[currentLanguage]}
                       </p>
                     </div>
                   </div>
@@ -33,7 +49,7 @@ export function About() {
                     <div className="flex flex-col items-end pb-[0.6px]">
                       <div className="flex flex-col justify-center leading-none">
                         <p className="font-handwriting text-5xl text-foreground whitespace-nowrap leading-none">
-                          {hero.name}
+                          {hero.name[currentLanguage]}
                         </p>
                       </div>
                     </div>
@@ -49,7 +65,7 @@ export function About() {
                           key={index}
                           className="font-sans font-normal text-[15px] text-foreground leading-normal mb-2 last:mb-0"
                         >
-                          {paragraph}
+                          {paragraph[currentLanguage]}
                         </p>
                       ))}
                     </div>
@@ -63,7 +79,7 @@ export function About() {
               <div className="grid grid-cols-3 gap-14">
                 {/* Skills Column */}
                 <div className="flex flex-col gap-6">
-                  <GridSectionHeader title="What I'm good at" />
+                  <GridSectionHeader title={t.whatImGoodAt} />
                   <div className="flex flex-col gap-8">
                     {skills.map((skill, index) => (
                       <SkillItem
@@ -78,7 +94,7 @@ export function About() {
 
                 {/* Timeline Column */}
                 <div className="flex flex-col gap-6">
-                  <GridSectionHeader title="Timeline" />
+                  <GridSectionHeader title={t.timeline} />
                   <div className="flex flex-col gap-8">
                     {timeline.map((item, index) => (
                       <TimelineItem
@@ -92,7 +108,7 @@ export function About() {
 
                 {/* Contacts Column */}
                 <div className="flex flex-col gap-6">
-                  <GridSectionHeader title="Find me" />
+                  <GridSectionHeader title={t.findMe} />
                   <div className="flex flex-col gap-8">
                     {contacts.map((contact, index) => (
                       <ContactItem
@@ -125,10 +141,10 @@ export function About() {
               {/* Greeting */}
               <div className="flex gap-2 items-center">
                 <p className="font-sans font-medium text-3xl text-foreground leading-none">
-                  {hero.greeting}
+                  {hero.greeting[currentLanguage]}
                 </p>
                 <p className="font-handwriting text-4xl text-foreground leading-none">
-                  {hero.name}
+                  {hero.name[currentLanguage]}
                 </p>
               </div>
 
@@ -139,7 +155,7 @@ export function About() {
                     key={index}
                     className="font-sans font-normal text-[15px] text-foreground leading-normal mb-3 last:mb-0"
                   >
-                    {paragraph}
+                    {paragraph[currentLanguage]}
                   </p>
                 ))}
               </div>
@@ -150,7 +166,7 @@ export function About() {
           <section className="flex flex-col gap-12">
             {/* Skills */}
             <div className="flex flex-col gap-6">
-              <GridSectionHeader title="What I'm good at" />
+              <GridSectionHeader title={t.whatImGoodAt} />
               <div className="flex flex-col gap-6">
                 {skills.map((skill, index) => (
                   <SkillItem
@@ -165,7 +181,7 @@ export function About() {
 
             {/* Timeline */}
             <div className="flex flex-col gap-6">
-              <GridSectionHeader title="Timeline" />
+              <GridSectionHeader title={t.timeline} />
               <div className="flex flex-col gap-5">
                 {timeline.map((item, index) => (
                   <TimelineItem
@@ -179,7 +195,7 @@ export function About() {
 
             {/* Contacts */}
             <div className="flex flex-col gap-6">
-              <GridSectionHeader title="Find me" />
+              <GridSectionHeader title={t.findMe} />
               <div className="flex flex-col gap-6">
                 {contacts.map((contact, index) => (
                   <ContactItem

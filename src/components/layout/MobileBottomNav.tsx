@@ -1,18 +1,35 @@
 import { Home, Briefcase, CircleUser } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../../lib/utils';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 interface MobileBottomNavProps {
   activeTab?: 'home' | 'works' | 'about';
 }
 
+const translations = {
+  en: {
+    home: 'Home',
+    works: 'Works',
+    about: 'About',
+  },
+  zh: {
+    home: '首页',
+    works: '作品',
+    about: '关于',
+  },
+};
+
 export function MobileBottomNav({ activeTab = 'home' }: MobileBottomNavProps) {
   const navigate = useNavigate();
+  const { currentLanguage } = useLanguage();
+
+  const t = translations[currentLanguage];
 
   const navItems = [
-    { id: 'home', icon: Home, label: 'Home', path: '/' },
-    { id: 'works', icon: Briefcase, label: 'Works', path: '/works' },
-    { id: 'about', icon: CircleUser, label: 'About', path: '/about' },
+    { id: 'home', icon: Home, label: t.home, path: '/' },
+    { id: 'works', icon: Briefcase, label: t.works, path: '/works' },
+    { id: 'about', icon: CircleUser, label: t.about, path: '/about' },
   ] as const;
 
   return (
