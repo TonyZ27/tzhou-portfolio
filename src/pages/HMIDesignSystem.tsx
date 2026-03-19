@@ -71,7 +71,7 @@ export function HMIDesignSystemPage() {
     <CaseStudyLayout activeTab="works" tocItems={tocItems}>
       <div className="flex flex-col gap-[60px]">
         {/* Section 1: One Minute Overview */}
-        <section id="one-minute-overview" className="flex flex-col gap-[60px]">
+        <section className="flex flex-col gap-[60px]">
           <HeroSection
             heroImage={hero.heroImage}
             title={hero.title[currentLanguage]}
@@ -79,17 +79,20 @@ export function HMIDesignSystemPage() {
             tags={tags.map(tag => tag[currentLanguage])}
             metadata={metadataItems}
             description={hero.description[currentLanguage]}
-            relatedProjects={hero.relatedProjects.map(rp => ({
-              name: rp.name[currentLanguage],
-              description: rp.description[currentLanguage],
-              href: rp.href,
-            }))}
+          //   relatedProjects={hero.relatedProjects.map(rp => ({
+          //     name: rp.name[currentLanguage],
+          //     description: rp.description[currentLanguage],
+          //     href: rp.href,
+          //   }
+          // )
+          // )  
+          // }
           />
 
           <Divider />
 
           <OutlineCard title={t.oneMinuteOverview}>
-            <div className="flex flex-col gap-10">
+            <div  id="one-minute-overview"  className="flex flex-col gap-10">
               {/* Problem */}
               <div className="flex flex-col gap-2">
                 <h4 className="font-sans text-lg text-foreground">{t.problem}</h4>

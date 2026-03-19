@@ -47,27 +47,23 @@ export function HeroPreview({ project, tags }: HeroPreviewProps) {
         }`}
       >
         {displayProject && (
-          <>
-            {/* Cover Image - z-0 */}
-            <img
-              src={getAssetUrl(displayProject.coverImage)}
-              alt={displayProject.title[currentLanguage]}
-              className="absolute inset-0 w-full h-full object-cover z-0"
-            />
-
-            {/* Gradient Overlay - z-10 */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
-
-            {/* Text Layer - z-20 */}
-            <div className="absolute inset-x-0 bottom-0 z-20 p-12">
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-3">
-                {tags.map((tag, index) => (
-                  <Tag key={index}>{tag[currentLanguage]}</Tag>
-                ))}
-              </div>
+          <div className="flex flex-col w-full h-full p-8 gap-6">
+            {/* Cover Image - 按宽度填充，高度自适应 */}
+            <div className="flex-1 min-h-0 w-full relative overflow-hidden">
+              <img
+                src={getAssetUrl(displayProject.coverImage)}
+                alt={displayProject.title[currentLanguage]}
+                className="w-full h-full object-cover"
+              />
             </div>
-          </>
+
+            {/* Tags - 位于图片下方，左对齐 */}
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag, index) => (
+                <Tag key={index}>{tag[currentLanguage]}</Tag>
+              ))}
+            </div>
+          </div>
         )}
       </div>
     </div>

@@ -6,13 +6,13 @@ The Navbar is the global routing and persistent action container for the portfol
 ## 2. Displayed Data & Functionality mapping
 **Primary Navigation (Routing):**
 - **Home (🏠):** Routes to `/`.
-- **Works (💼):** Routes to `/works` (pending creation).
-- **About (✉️):** Routes to `/about` (pending creation).
+- **Works (💼):** Routes to `/works` 
+- **About (✉️):** Routes to `/about` 
 
 **Secondary Actions (Global Buttons):**
 - **AI Chatbot (🤖):** Trigger for a future conversational UI.
-- **Translate (文A):** Toggle for EN/ZH language switch.
-*(⚠️ CRITICAL RULE: Both AI Chatbot and Translate are STRICTLY UI PLACEHOLDERS right now. Do NOT implement any state logic, modal popups, or translation functions for them unless explicitly instructed in future phases.)*
+- **[MODIFIED] Translate (文A):** Toggle for EN/ZH language switch. This button is now ACTIVE and will trigger global state changes for the website's language context.
+*(⚠️ **[MODIFIED]** CRITICAL RULE: The AI Chatbot remains STRICTLY a UI PLACEHOLDER right now. Do NOT implement any state logic for it. However, the Translate button is now EXEMPT from this rule and must implement the global language toggling logic.)*
 
 ## 3. Layout Architecture & Responsive Breakpoints
 The layout fundamentally transforms at the `lg` (1024px) breakpoint.
@@ -36,5 +36,6 @@ The vertical sidebar is completely dismantled and split into two separate fixed 
    - **UI Requirement:** Must display BOTH the icon and the text label (e.g., "Home") stacked vertically for each tab to ensure clear touch targets. Must include a top border or subtle shadow to separate from page content.
 
 ## 4. Different States
-- **Active Route:** The current page tab in the Primary Navigation should be highlighted ( Icon/Text becomes `aceent` while others are `text-muted-foreground`).
+- **Active Route:** The current page tab in the Primary Navigation should be highlighted (Icon/Text becomes `accent` while others are `text-muted-foreground`).
+- **[NEW] Language Toggle State:** Clicking the Translate button must trigger a global state update (e.g., via a React Context) to switch the entire application's language between English ('en') and Chinese ('zh').
 - **Safe Area (Mobile):** The Bottom Tab Bar must account for iOS safe area padding at the bottom (`pb-safe` or standard `pb-4` to avoid overlapping with the iPhone home indicator).

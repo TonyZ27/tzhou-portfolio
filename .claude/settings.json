@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "extraKnownMarketplaces": {
+    "vercel-labs-skills": {
+      "source": "github",
+      "repo": "vercel-labs/skills"
+    }
+  }
+}

@@ -41,8 +41,8 @@ export const projects: Project[] = [
     },
     year: '2025',
     description: {
-      en: 'build a unified design system that addresses fragmented in-vehicle experiences for volvo',
-      zh: '为沃尔沃构建统一的设计系统，解决车载体验碎片化问题',
+      en: 'Build a unified design system to address fragmented in-vehicle experiences for Volvo and improve the delivery workflow.',
+      zh: '为沃尔沃构建统一的设计系统和敏捷的交付流程，解决车载体验碎片化问题',
     },
     coverImage: 'images/hmi-design-system/cover.png',
     tags: [
@@ -73,13 +73,13 @@ export const projects: Project[] = [
     year: '2026',
     description: {
       en: 'yes, the portfolio you are viewing was designed and developed entirely from scratch using Claude Code',
-      zh: '没错，你正在浏览的这个作品集网站完全使用 Claude Code 从零设计和开发',
+      zh: '是的，你现在浏览的这个网站是完全使用 Vibe Coding 从零设计和开发部署的',
     },
-    coverImage: 'images/portfolio.jpg',
+    coverImage: 'images/portfolio-cover.png',
     tags: [
       { en: 'Website', zh: '网站' },
-      { en: 'Portfolio', zh: '作品集' },
-      { en: 'Design', zh: '设计' },
+      { en: 'Vibe Coding', zh: 'Vibe Coding' },
+      { en: 'Portfolio', zh: 'Portfolio' },
     ],
     company: {
       en: 'Myself',
@@ -155,7 +155,6 @@ export const projects: Project[] = [
     category: [
       { en: 'Product Design', zh: '产品设计' },
     ],
-    featured: true
   },
   {
     id: 'marksnap',
@@ -169,7 +168,7 @@ export const projects: Project[] = [
       en: 'a browser plugin for capturing and annotating web content',
       zh: '一款用于捕获和标注网页内容的浏览器插件',
     },
-    coverImage: 'images/marksnap.jpg',
+    coverImage: 'images/external/github.png',
     tags: [
       { en: 'Browser Extension', zh: '浏览器扩展' },
       { en: 'Tool', zh: '工具' },
@@ -201,7 +200,7 @@ export const projects: Project[] = [
       en: 'a browser plugin for inspecting and identifying fonts on any webpage',
       zh: '一款用于检查和识别任意网页字体的浏览器插件',
     },
-    coverImage: 'images/font-inspector.jpg',
+    coverImage: 'images/external/github.png',
     tags: [
       { en: 'Browser Extension', zh: '浏览器扩展' },
       { en: 'Tool', zh: '工具' },
@@ -232,7 +231,7 @@ export const projects: Project[] = [
       en: 'a Figma plugin for creating sequence diagrams and flow prototypes',
       zh: '一款用于创建序列图和流程原型的 Figma 插件',
     },
-    coverImage: 'images/sequence-prototyper.jpg',
+    coverImage: 'images/external/figma-community.png',
     tags: [
       { en: 'Figma', zh: 'Figma' },
       { en: 'Plugin', zh: '插件' },
@@ -249,7 +248,7 @@ export const projects: Project[] = [
     category: [
       { en: 'Development', zh: '开发' },
     ],
-    externalLink: 'https://www.figma.com/community/plugin/1234567890/find-in-figma'
+    externalLink: 'https://www.figma.com/community/plugin/1605529378886881954/sequence-prototyper'
   },
 {
     id: 'media-infotainment',

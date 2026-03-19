@@ -144,7 +144,7 @@ export const aboutData: AboutData = {
       },
       handle: "@Tony",
       type: "download",
-      target: "/resume.pdf",
+      target: "/public/documents/resume_tonyzhou_product_designer_en.pdf",
       icon: "file"
     },
     {
