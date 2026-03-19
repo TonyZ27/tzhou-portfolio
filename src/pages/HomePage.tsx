@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { VerticalNav } from '../components/layout/VerticalNav';
 import { MobileHeader } from '../components/layout/MobileHeader';
 import { MobileBottomNav } from '../components/layout/MobileBottomNav';
@@ -61,9 +62,9 @@ export function HomePage() {
 
           <div className="flex flex-col mt-4 flex-1">
             {selectedProjects.map((project) => (
-              <a
+              <Link
                 key={project.id}
-                href={`/work/${project.id}`}
+                to={`/work/${project.id}`}
                 className="group flex flex-col gap-2 py-4 border-b border-bg-border last:border-0"
               >
                 <span className="font-sans text-xl font-medium text-foreground">
@@ -75,7 +76,7 @@ export function HomePage() {
                 <p className="font-sans text-base text-muted-foreground">
                   {project.description[currentLanguage]}
                 </p>
-              </a>
+              </Link>
             ))}
           </div>
 
