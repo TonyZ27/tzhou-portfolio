@@ -30,6 +30,11 @@ export const projects: Project[] = [
     category: [
       { en: 'Product Design', zh: '产品设计' },
     ],
+    role: {
+      en: 'Lead Product Designer',
+      zh: '首席产品设计师',
+    },
+    readingTime: 6,
     featured: true
   },
   {
@@ -61,6 +66,11 @@ export const projects: Project[] = [
     category: [
       { en: 'Product Design', zh: '产品设计' },
     ],
+    role: {
+      en: 'Lead Product Designer',
+      zh: '首席产品设计师',
+    },
+    readingTime: 8,
     featured: true
   },
   {
@@ -72,7 +82,7 @@ export const projects: Project[] = [
     },
     year: '2026',
     description: {
-      en: 'yes, the portfolio you are viewing was designed and developed entirely from scratch using Claude Code',
+      en: 'yes, the portfolio you are viewing was designed and developed entirely from scratch by Vibe Coding',
       zh: '是的，你现在浏览的这个网站是完全使用 Vibe Coding 从零设计和开发部署的',
     },
     coverImage: 'images/portfolio-cover.png',
@@ -93,6 +103,11 @@ export const projects: Project[] = [
       { en: 'Product Design', zh: '产品设计' },
       { en: 'Development', zh: '开发' },
     ],
+    role: {
+      en: 'Designer & Developer',
+      zh: '设计师 & 开发者',
+    },
+    readingTime: 9,
     featured: true
   },
   {

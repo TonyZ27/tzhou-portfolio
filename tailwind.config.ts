@@ -81,11 +81,22 @@ const config: Config = {
         'liquid': 'liquid 1s ease-in-out',
         'hourglass-flip': 'hourglass-flip 1s ease-in-out',
         'message-pop': 'message-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
+        'fade-in-up': 'fade-in-up 1s ease-out forwards',
+        'scroll-guide': 'scroll-guide 1.8s ease-in-out infinite',
       },
       keyframes: {
         'fade-in': {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        'pulse-slow': {
+          '0%, 100%': { opacity: '0.3' },
+          '50%': { opacity: '1' },
+        },
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         'liquid': {
           '0%': { transform: 'scale(1)', opacity: '1' },
@@ -100,6 +111,13 @@ const config: Config = {
         'message-pop': {
           '0%': { opacity: '0', transform: 'scale(0.8) translateY(10px)' },
           '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+        },
+        /* Scroll guide: fill sweeps up from bottom, then exits from top */
+        'scroll-guide': {
+          '0%':   { transform: 'translateY(100%)' },
+          '40%':  { transform: 'translateY(0%)' },
+          '60%':  { transform: 'translateY(0%)' },
+          '100%': { transform: 'translateY(-100%)' },
         },
       },
     },

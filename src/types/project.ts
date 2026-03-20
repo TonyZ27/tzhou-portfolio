@@ -17,4 +17,6 @@ export interface Project {
   featured?: boolean;
   externalLink?: string;
   inactive?: boolean;
+  role?: LocalizedText;
+  readingTime?: number;
 }

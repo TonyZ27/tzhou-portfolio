@@ -34,7 +34,7 @@ export function VerticalNav({ activeTab = 'home' }: VerticalNavProps) {
   ] as const;
 
   return (
-    <nav className="hidden lg:flex bg-background border-r border-border flex-col gap-6 h-screen items-center py-6 w-16 shrink-0 sticky top-0">
+    <nav className="hidden lg:flex border-r border-border flex-col gap-6 h-screen items-center py-6 w-16 shrink-0 sticky top-0">
       {/* Logo */}
       <div className="flex h-[70px] items-center justify-center relative w-[17px]">
         <div className="flex-none rotate-90">

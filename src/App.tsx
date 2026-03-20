@@ -6,10 +6,18 @@ import { About } from './pages/About';
 import { AIVoiceAssistantPage } from './pages/AIVoiceAssistant';
 import { HMIDesignSystemPage } from './pages/HMIDesignSystem';
 import { VibeCodingPortfolioPage } from './pages/VibeCodingPortfolio';
+import { useScrollNavigation } from './hooks/useScrollNavigation';
+
+/** Activates scroll/swipe navigation between the 3 main pages. Must live inside BrowserRouter. */
+function ScrollNavigationWrapper() {
+  useScrollNavigation();
+  return null;
+}
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollNavigationWrapper />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/works" element={<WorksPage />} />

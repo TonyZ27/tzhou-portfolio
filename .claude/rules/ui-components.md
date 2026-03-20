@@ -27,3 +27,9 @@ paths:
 
 ## Handling Token Conflicts
 When conflicts arise between our established design system tokens and a specific Figma mockup, prefer our design system tokens to maintain global consistency, but adjust spacing or sizes minimally to match the visual intent.
+
+## Mobile Adaptation
+- **Always implement mobile alongside desktop.** Any time a UI component or layout is added or modified, the corresponding mobile adaptation must be implemented in the same change — never leave a component desktop-only.
+- Use Tailwind responsive prefixes (`lg:`, `md:`, `sm:`) to handle breakpoints. The project uses `lg:` as the desktop/mobile split (desktop = `lg` and above, mobile = below `lg`).
+- For components that only appear in the desktop layout (e.g., inside `hidden lg:block` wrappers), verify whether a mobile equivalent exists and add or update it accordingly.
+- Test both viewports before marking a task complete.

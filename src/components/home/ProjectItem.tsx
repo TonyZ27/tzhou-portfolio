@@ -6,7 +6,6 @@ import { useLanguage } from '../../contexts/LanguageContext';
 interface ProjectItemProps {
   project: Project;
   isHovered: boolean;
-  isBlurred: boolean;
   onHover: () => void;
   onLeave: () => void;
   onMouseLeaveItem: () => void;
@@ -16,7 +15,6 @@ interface ProjectItemProps {
 export function ProjectItem({
   project,
   isHovered,
-  isBlurred,
   onHover,
   onLeave,
   onMouseLeaveItem,
@@ -28,7 +26,6 @@ export function ProjectItem({
     <div
       className={cn(
         'flex flex-col gap-2 items-start justify-center relative w-full cursor-pointer transition-all duration-200',
-        isBlurred && 'blur-[6px] opacity-60',
         isHovered
           ? 'bg-[rgba(31,31,31,0.04)] pl-6 pr-3 py-4'
           : 'p-4'
@@ -52,11 +49,7 @@ export function ProjectItem({
         <span
           className={cn(
             'font-mono text-xl leading-none whitespace-nowrap transition-colors duration-200',
-            isHovered
-              ? 'text-primary'
-              : isBlurred
-              ? 'text-foreground'
-              : 'text-muted-foreground'
+            isHovered ? 'text-primary' : 'text-muted-foreground'
           )}
         >
           {project.index}
@@ -72,8 +65,6 @@ export function ProjectItem({
               'font-sans text-2xl leading-normal whitespace-nowrap transition-colors duration-200',
               isHovered
                 ? 'text-primary font-medium'
-                : isBlurred
-                ? 'text-muted-foreground font-medium'
                 : 'text-foreground font-medium'
             )}
           >
@@ -105,11 +96,7 @@ export function ProjectItem({
         <p
           className={cn(
             'font-sans text-base leading-normal max-w-[560px] relative shrink-0 w-full transition-colors duration-200',
-            isHovered
-              ? 'text-primary'
-              : isBlurred
-              ? 'text-[#a1a1a1]'
-              : 'text-muted-foreground'
+            isHovered ? 'text-primary' : 'text-muted-foreground'
           )}
         >
           {project.description[currentLanguage]}
