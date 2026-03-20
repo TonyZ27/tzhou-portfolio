@@ -65,8 +65,15 @@
     @apply font-semibold text-foreground;
   }
 
-  /* 连续段落之间添加 4px 间距 */
+  /* 连续段落之间添加 -8x 间距 */
   p + p {
     @apply -mt-2;
+  }
+}
+
+@layer utilities {
+  /* prose-content: TextBlock 富文本段间距，可调整 mt 值 */
+  .prose-content p + p {
+    @apply mt-2;
   }
 }

@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { motion, useInView } from 'motion/react';
 import { MediaRenderer } from './MediaRenderer';
 
 interface MediaSplitTextProps {
@@ -21,8 +23,16 @@ export function MediaSplitText({
   reverse = false,
   className = '',
 }: MediaSplitTextProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px 0px' });
+
   const textContent = (
-    <div className="flex flex-col gap-2 flex-1">
+    <motion.div
+      className="flex flex-col gap-2 flex-1"
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       {textBlock.subtitle && (
         <h3 className="font-sans text-xl text-foreground leading-normal">
           {textBlock.subtitle}
@@ -41,22 +51,28 @@ export function MediaSplitText({
           {textBlock.content}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 
   const mediaContent = (
-    <div className={`w-full lg:w-1/2 ${reverse ? '' : ''}`}>
+    <motion.div
+      className={`w-full lg:w-1/2 ${reverse ? '' : ''}`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, delay: 0.12, ease: 'easeOut' }}
+    >
       <MediaRenderer
         src={media.src}
         alt={media.alt}
         aspectRatio={media.aspectRatio || '16/9'}
         objectFit="contain"
       />
-    </div>
+    </motion.div>
   );
 
   return (
     <div
+      ref={ref}
       className={`flex flex-col lg:flex-row gap-8 lg:gap-[120px] items-start w-full ${
         reverse ? 'lg:flex-row-reverse' : ''
       } ${className}`}

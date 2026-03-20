@@ -33,7 +33,7 @@ export function HomePage() {
       {/* Desktop Layout: Three-column grid */}
       <div className="hidden lg:grid lg:grid-cols-[64px_1fr_1fr] lg:h-screen lg:overflow-hidden ">
         {/* Left + Middle Column Container */}
-        <div className="col-span-2 grid grid-cols-subgrid bg-background shadow-[inset_-16px_0px_16px_0px_rgba(30,33,53,0.16)]">
+        <div className="col-span-2 grid grid-cols-subgrid bg-background shadow-[inset_-16px_0px_16px_0px_rgba(30,33,53,0.24)]">
           {/* Left Column: Vertical Navigation */}
           <VerticalNav activeTab="home" />
 

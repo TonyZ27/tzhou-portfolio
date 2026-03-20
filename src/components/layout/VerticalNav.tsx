@@ -36,13 +36,17 @@ export function VerticalNav({ activeTab = 'home' }: VerticalNavProps) {
   return (
     <nav className="hidden lg:flex border-r border-border flex-col gap-6 h-screen items-center py-6 w-16 shrink-0 sticky top-0">
       {/* Logo */}
-      <div className="flex h-[70px] items-center justify-center relative w-[17px]">
+      <button
+        onClick={() => navigate('/')}
+        className="flex h-[70px] items-center justify-center relative w-[17px]"
+        aria-label="Go to home"
+      >
         <div className="flex-none rotate-90">
           <span className="font-sans font-semibold h-[17px] leading-normal relative text-sm text-foreground w-[70px] whitespace-nowrap">
             T.ZHOU
           </span>
         </div>
-      </div>
+      </button>
 
       {/* Divider */}
       <div className="bg-border h-px w-[29px]" />

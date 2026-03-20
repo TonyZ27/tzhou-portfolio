@@ -1,3 +1,4 @@
+import { MotionConfig } from 'motion/react';
 import { VerticalNav } from '../layout/VerticalNav';
 import { CaseStudySidebar, type TocItem } from './CaseStudySidebar';
 import { MobileHeader } from '../layout/MobileHeader';
@@ -11,6 +12,7 @@ interface CaseStudyLayoutProps {
 
 export function CaseStudyLayout({ children, activeTab = 'works', tocItems }: CaseStudyLayoutProps) {
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-background">
       {/* Desktop Layout */}
       <div className="hidden lg:flex lg:h-screen lg:overflow-hidden">
@@ -49,5 +51,6 @@ export function CaseStudyLayout({ children, activeTab = 'works', tocItems }: Cas
         <MobileBottomNav activeTab={activeTab} />
       </div>
     </div>
+    </MotionConfig>
   );
 }

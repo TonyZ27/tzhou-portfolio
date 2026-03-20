@@ -8,10 +8,10 @@ const PAGE_ORDER = ['/', '/works', '/about'];
 const COOLDOWN_MS = 1000;
 
 /** Minimum accumulated wheel delta (px) required to trigger navigation. */
-const DELTA_THRESHOLD = 80;
+const DELTA_THRESHOLD = 300;
 
 /** Minimum touch swipe distance (px) required to trigger navigation. */
-const SWIPE_THRESHOLD = 60;
+const SWIPE_THRESHOLD = 100;
 
 /**
  * Walk up the DOM from `el` and return the first ancestor (or itself)

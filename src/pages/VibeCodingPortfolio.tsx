@@ -82,7 +82,7 @@ export function VibeCodingPortfolioPage() {
             content={
               <div className="flex flex-col gap-2">
                 <p className="mb-4">{digitalTeam.intro[currentLanguage]}</p>
-                <ul className="flex flex-col gap-4">
+                <ul className="flex flex-col gap-4 list-disc pl-5">
                   {digitalTeam.items.map((item, index) => (
                     <li key={index}>
                       <span className="font-medium">{item.title[currentLanguage]}</span>

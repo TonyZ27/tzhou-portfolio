@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { motion, useInView } from 'motion/react';
 import { MediaRenderer } from './MediaRenderer';
 
 interface SolutionSplitMediaProps {
@@ -25,12 +27,23 @@ export function SolutionSplitMedia({
   additionalMedia,
   className = '',
 }: SolutionSplitMediaProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px 0px' });
+
+  const addRef = useRef(null);
+  const addInView = useInView(addRef, { once: true, margin: '-80px 0px' });
+
   return (
     <div className={`flex flex-col gap-8 w-full ${className}`}>
       {/* Main Content */}
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-[120px] items-start w-full">
+      <div ref={ref} className="flex flex-col lg:flex-row gap-8 lg:gap-[120px] items-start w-full">
         {/* Left: Text Content */}
-        <div className="flex flex-col gap-4 w-full lg:flex-1 lg:max-w-[400px]">
+        <motion.div
+          className="flex flex-col gap-4 w-full lg:flex-1 lg:max-w-[400px]"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
           <div className="flex flex-col gap-1">
             <h3 className="font-sans text-xl text-foreground">
               {title}
@@ -44,38 +57,51 @@ export function SolutionSplitMedia({
           <p className="font-sans text-base text-foreground leading-normal">
             {description}
           </p>
-        </div>
+        </motion.div>
 
         {/* Right: Media */}
-        <div className="w-full lg:w-2/3">
+        <motion.div
+          className="w-full lg:w-2/3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.12, ease: 'easeOut' }}
+        >
           <MediaRenderer
             src={media.src}
             alt={media.alt}
             aspectRatio={media.aspectRatio}
             objectFit="contain"
           />
-        </div>
+        </motion.div>
       </div>
 
-      {/* Multi-part Content (for Selective Engagement) */}
+      {/* Multi-part Content */}
       {isMultiPart && additionalContent && additionalMedia && (
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-[120px] items-start w-full">
-          {/* Left: Additional Text */}
-          <div className="w-full lg:flex-1 lg:max-w-[400px]">
+        <div ref={addRef} className="flex flex-col lg:flex-row gap-8 lg:gap-[120px] items-start w-full">
+          <motion.div
+            className="w-full lg:flex-1 lg:max-w-[400px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={addInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+          >
             <p className="font-sans text-base text-foreground leading-normal">
               {additionalContent}
             </p>
-          </div>
+          </motion.div>
 
-          {/* Right: Additional Media */}
-          <div className="w-full lg:w-2/3">
+          <motion.div
+            className="w-full lg:w-2/3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={addInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.12, ease: 'easeOut' }}
+          >
             <MediaRenderer
               src={additionalMedia}
               alt="Additional illustration"
               aspectRatio="600/443"
               objectFit="contain"
             />
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

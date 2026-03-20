@@ -228,7 +228,7 @@ export const hmiDesignSystemData: HMIDesignSystemData = {
   pitch: {
     title: {
       en: 'The Pitch (Flipping the Frame for Leadership)',
-      zh: '破局：为领导层转换视角',
+      zh: '帮助Stakeholders转换视角',
     },
     content: {
       en: `

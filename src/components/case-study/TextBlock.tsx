@@ -1,3 +1,6 @@
+import { useRef } from 'react';
+import { motion, useInView } from 'motion/react';
+
 interface TextBlockProps {
   title?: string;
   subtitle?: string;
@@ -13,9 +16,16 @@ export function TextBlock({
   showTitle = true,
   className = '',
 }: TextBlockProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px 0px' });
+
   return (
-    <div
+    <motion.div
+      ref={ref}
       className={`flex flex-col gap-2 w-full lg:w-2/3 ${className}`}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       {subtitle && (
         <h3 className="font-sans text-xl text-foreground leading-normal">
@@ -29,7 +39,7 @@ export function TextBlock({
       )}
       {typeof content === 'string' ? (
         <div
-          className="font-sans text-base text-foreground leading-normal"
+          className="font-sans text-base text-foreground leading-normal prose-content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       ) : (
@@ -37,6 +47,6 @@ export function TextBlock({
           {content}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

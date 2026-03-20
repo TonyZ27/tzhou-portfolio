@@ -170,6 +170,7 @@ export const projects: Project[] = [
     category: [
       { en: 'Product Design', zh: '产品设计' },
     ],
+    inactive: true
   },
   {
     id: 'marksnap',

@@ -32,7 +32,7 @@ export function About() {
 
         {/* Main Content */}
         <main className="h-full overflow-auto">
-          <div className="flex flex-col gap-[120px] p-6">
+          <div className="flex flex-col justify-between p-6 h-full">
             {/* Hero Section */}
             <section className="px-6 pt-6">
               <div className="flex flex-col gap-10 max-w-xl">
@@ -40,15 +40,15 @@ export function About() {
                 <div className="flex gap-2 items-center">
                   <div className="flex flex-col">
                     <div className="flex flex-col justify-center">
-                      <p className="font-sans font-medium text-4xl text-foreground whitespace-nowrap leading-none">
+                      <p className="font-sans font-medium text-5xl text-foreground whitespace-nowrap leading-none">
                         {hero.greeting[currentLanguage]}
                       </p>
                     </div>
                   </div>
-                  <div className="flex flex-col items-start justify-center h-[58.6px]">
-                    <div className="flex flex-col items-end pb-[0.6px]">
+                  <div className="flex flex-col items-start justify-center">
+                    <div className="flex flex-col items-end">
                       <div className="flex flex-col justify-center leading-none">
-                        <p className="font-handwriting text-5xl text-foreground whitespace-nowrap leading-none">
+                        <p className="font-handwriting text-7xl text-foreground whitespace-nowrap leading-none">
                           {hero.name[currentLanguage]}
                         </p>
                       </div>
@@ -63,7 +63,7 @@ export function About() {
                       {hero.introParagraphs.map((paragraph, index) => (
                         <p
                           key={index}
-                          className="font-sans font-normal text-[15px] text-foreground leading-normal mb-2 last:mb-0"
+                          className="font-sans text-lg font-normal text-foreground leading-normal mb-2 last:mb-0"
                         >
                           {paragraph[currentLanguage]}
                         </p>
@@ -75,8 +75,8 @@ export function About() {
             </section>
 
             {/* Info Grid Section */}
-            <section className="px-6">
-              <div className="grid grid-cols-3 gap-14">
+            <section className="px-6 pb-20">
+              <div className="grid grid-cols-3 gap-12">
                 {/* Skills Column */}
                 <div className="flex flex-col gap-6">
                   <GridSectionHeader title={t.whatImGoodAt} />
